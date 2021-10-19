@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <fstream>
 
 class Shape
 {
@@ -9,6 +10,8 @@ public:
 	virtual ~Shape();
 
 	virtual void Draw() = 0;
+	virtual void Save(std::ofstream& writeFile) = 0;
+	virtual Shape* Load(std::ifstream& readFile) = 0;
 
 	virtual void SetX(int NewX);
 	virtual void SetY(int NewY);

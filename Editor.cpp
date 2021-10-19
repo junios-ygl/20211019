@@ -100,16 +100,8 @@ void Editor::Load()
 	{
 		if (line == "세모")
 		{
-			getline(readFile, line); //X값
-			int X = std::stoi(line);
-
-			getline(readFile, line); //Y값
-			int Y = std::stoi(line);
-
-			getline(readFile, line); //한변
-			int Edge = std::stoi(line);
-
-			AddShape(new Triangle(X, Y, Edge));
+			Triangle* T = new Triangle();
+			AddShape(T->Load(readFile));
 		}
 		else if (line == "네모")
 		{
