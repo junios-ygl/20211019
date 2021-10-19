@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include "Editor.h"
 #include "Shape.h"
 #include "Triangle.h"
@@ -45,40 +46,41 @@ void Editor::Draw()
 
 void Editor::Save()
 {
+	std::ofstream writeFile;
+	writeFile.open("Editor.sav");
+
+
 	for (auto Object : Shapes)
 	{
 		if (dynamic_cast<Triangle*>(Object) != nullptr)
 		{
 			Triangle* T = dynamic_cast<Triangle*>(Object);
-			std::cout << T->GetName() << std::endl;
-			std::cout << T->GetX() << std::endl;
-			std::cout << T->GetY() << std::endl;
-			std::cout << T->GetEdge() << std::endl;
+			writeFile << T->GetName() << std::endl;
+			writeFile << T->GetX() << std::endl;
+			writeFile << T->GetY() << std::endl;
+			writeFile << T->GetEdge() << std::endl;
 
 		} 
 		else if (dynamic_cast<Rectangle*>(Object) != nullptr)
 		{
 			Rectangle* T = dynamic_cast<Rectangle*>(Object);
-			std::cout << T->GetName() << std::endl;
-			std::cout << T->GetX() << std::endl;
-			std::cout << T->GetY() << std::endl;
-			std::cout << T->GetWidth() << std::endl;
-			std::cout << T->GetHeight() << std::endl;
+			writeFile << T->GetName() << std::endl;
+			writeFile << T->GetX() << std::endl;
+			writeFile << T->GetY() << std::endl;
+			writeFile << T->GetWidth() << std::endl;
+			writeFile << T->GetHeight() << std::endl;
 		}
 		else if (dynamic_cast<Circle*>(Object) != nullptr)
 		{
 			Circle* T = dynamic_cast<Circle*>(Object);
-			std::cout << T->GetName() << std::endl;
-			std::cout << T->GetX() << std::endl;
-			std::cout << T->GetY() << std::endl;
-			std::cout << T->GetRadius() << std::endl;
+			writeFile << T->GetName() << std::endl;
+			writeFile << T->GetX() << std::endl;
+			writeFile << T->GetY() << std::endl;
+			writeFile << T->GetRadius() << std::endl;
 		}
-
-
-		//Object->GetX();
-		//Object->GetY();
-
 	}
+
+	writeFile.close();
 }
 
 void Editor::Load()

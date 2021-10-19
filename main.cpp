@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include "Editor.h"
 #include "Triangle.h"
 #include "Rectangle.h"
@@ -17,7 +18,6 @@ int main()
 	editor->Draw();
 
 	editor->Save();
-
  
 	delete editor;
 
