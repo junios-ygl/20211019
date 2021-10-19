@@ -15,6 +15,9 @@ public:
 	inline void SetWidth(int NewWidth) { Width = NewWidth; }
 	inline void SetHeight(int NewHeight) { Height = NewHeight; }
 
+	virtual void Save(std::ofstream& writeFile) override;
+	virtual Shape* Load(std::ifstream& readFile) override;
+
 private:
 	int Width;
 	int Height;

@@ -13,6 +13,12 @@ Editor::Editor()
 
 Editor::~Editor()
 {
+	for (auto Object : Shapes)
+	{
+		delete Object;
+	}
+
+	Shapes.clear();
 }
 
 void Editor::Draw()
@@ -54,36 +60,23 @@ void Editor::Save()
 	{
 		if (dynamic_cast<Triangle*>(Object) != nullptr)
 		{
-			Triangle* T = dynamic_cast<Triangle*>(Object);
-			writeFile << T->GetName() << std::endl;
-			writeFile << T->GetX() << std::endl;
-			writeFile << T->GetY() << std::endl;
-			writeFile << T->GetEdge() << std::endl;
+			Triangle* Temp = dynamic_cast<Triangle*>(Object);
+			Temp->Save(writeFile);
 		} 
 		else if (dynamic_cast<Rectangle*>(Object) != nullptr)
 		{
-			Rectangle* T = dynamic_cast<Rectangle*>(Object);
-			writeFile << T->GetName() << std::endl;
-			writeFile << T->GetX() << std::endl;
-			writeFile << T->GetY() << std::endl;
-			writeFile << T->GetWidth() << std::endl;
-			writeFile << T->GetHeight() << std::endl;
+			Rectangle* Temp = dynamic_cast<Rectangle*>(Object);
+			Temp->Save(writeFile);
 		}
 		else if (dynamic_cast<Circle*>(Object) != nullptr)
 		{
-			Circle* T = dynamic_cast<Circle*>(Object);
-			writeFile << T->GetName() << std::endl;
-			writeFile << T->GetX() << std::endl;
-			writeFile << T->GetY() << std::endl;
-			writeFile << T->GetRadius() << std::endl;
+			Circle* Temp = dynamic_cast<Circle*>(Object);
+			Temp->Save(writeFile);
 		}
 		else if (dynamic_cast<Star*>(Object) != nullptr)
 		{
-			Star* T = dynamic_cast<Star*>(Object);
-			writeFile << T->GetName() << std::endl;
-			writeFile << T->GetX() << std::endl;
-			writeFile << T->GetY() << std::endl;
-			writeFile << T->GetColor() << std::endl;
+			Star* Temp = dynamic_cast<Star*>(Object);
+			Temp->Save(writeFile);
 		}
 	}
 
@@ -105,45 +98,18 @@ void Editor::Load()
 		}
 		else if (line == "네모")
 		{
-			getline(readFile, line); //X값
-			int X = std::stoi(line);
-
-			getline(readFile, line); //Y값
-			int Y = std::stoi(line);
-
-			getline(readFile, line); //Width
-			int Width = std::stoi(line);
-
-			getline(readFile, line); //Height
-			int Height = std::stoi(line);
-
-			AddShape(new Rectangle(X, Y, Width, Height));
+			Rectangle* T = new Rectangle();
+			AddShape(T->Load(readFile));
 		}
 		else if (line == "동그라미")
 		{
-			getline(readFile, line); //X값
-			int X = std::stoi(line);
-
-			getline(readFile, line); //Y값
-			int Y = std::stoi(line);
-
-			getline(readFile, line); //Radius
-			int Radius = std::stoi(line);
-
-			AddShape(new Circle(X, Y, Radius));
+			Circle* T = new Circle();
+			AddShape(T->Load(readFile));
 		}
 		else if (line == "별")
 		{
-			getline(readFile, line); //X값
-			int X = std::stoi(line);
-
-			getline(readFile, line); //Y값
-			int Y = std::stoi(line);
-
-			getline(readFile, line); //color
-			int Color = std::stoi(line);
-
-			AddShape(new Star(X, Y, Color));
+			Star* T = new Star();
+			AddShape(T->Load(readFile));
 		}
 	}
 	

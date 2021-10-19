@@ -11,6 +11,9 @@ public:
 	inline void SetRadius(int NewRadius) { Radius = NewRadius; }
 
 	virtual void Draw() override;
+
+	virtual void Save(std::ofstream& writeFile) override;
+	virtual Shape* Load(std::ifstream& readFile) override;
 private:
 	int Radius;
 };

@@ -5,6 +5,10 @@
 
 Triangle::Triangle()
 {
+	SetX(0);
+	SetY(0);
+	SetEdge(0);
+	Name = "세모";
 }
 
 Triangle::Triangle(int NewX, int NewY, int NewEdge)
@@ -46,6 +50,10 @@ Shape* Triangle::Load(std::ifstream& readFile)
 
 	getline(readFile, line); //한변
 	int Edge = std::stoi(line);
+
+	SetX(X);
+	SetY(Y);
+	SetEdge(Edge);
 
 	return this;
 }
