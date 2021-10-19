@@ -1,4 +1,6 @@
 #pragma once
+#include <string>
+
 class Shape
 {
 public:
@@ -14,8 +16,12 @@ public:
 	virtual int GetX();
 	virtual int GetY();
 
-private:
+	inline std::string GetName() { return Name; }
+
+protected:
 	int X;
 	int Y;
+
+	std::string Name;
 };
 
