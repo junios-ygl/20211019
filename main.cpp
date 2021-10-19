@@ -4,6 +4,7 @@
 #include "Triangle.h"
 #include "Rectangle.h"
 #include "Circle.h"
+#include "Star.h"
 
 using namespace std;
 
@@ -13,7 +14,7 @@ int main()
 
 	editor->Load();
 
-	//editor->AddShape(new Triangle(10, 10, 10));
+	//editor->AddShape(new Star(1, 1, 2));
 	//editor->AddShape(new Rectangle(20, 20, 10, 20));
 	//editor->AddShape(new Circle(5, 5, 5));
 

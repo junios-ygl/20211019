@@ -5,6 +5,7 @@
 #include "Triangle.h"
 #include "Rectangle.h"
 #include "Circle.h"
+#include "Star.h"
 
 Editor::Editor()
 {
@@ -76,6 +77,14 @@ void Editor::Save()
 			writeFile << T->GetY() << std::endl;
 			writeFile << T->GetRadius() << std::endl;
 		}
+		else if (dynamic_cast<Star*>(Object) != nullptr)
+		{
+			Star* T = dynamic_cast<Star*>(Object);
+			writeFile << T->GetName() << std::endl;
+			writeFile << T->GetX() << std::endl;
+			writeFile << T->GetY() << std::endl;
+			writeFile << T->GetColor() << std::endl;
+		}
 	}
 
 	writeFile.close();
@@ -130,6 +139,19 @@ void Editor::Load()
 			int Radius = std::stoi(line);
 
 			AddShape(new Circle(X, Y, Radius));
+		}
+		else if (line == "º°")
+		{
+			getline(readFile, line); //X°ª
+			int X = std::stoi(line);
+
+			getline(readFile, line); //Y°ª
+			int Y = std::stoi(line);
+
+			getline(readFile, line); //color
+			int Color = std::stoi(line);
+
+			AddShape(new Star(X, Y, Color));
 		}
 	}
 	
