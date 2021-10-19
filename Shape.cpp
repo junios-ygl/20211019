@@ -6,6 +6,8 @@ Shape::Shape()
 
 Shape::Shape(int NewX, int NewY)
 {
+	SetX(NewX);
+	SetY(NewY);
 }
 
 Shape::~Shape()
@@ -14,18 +16,20 @@ Shape::~Shape()
 
 void Shape::SetX(int NewX)
 {
+	X = NewX;
 }
 
-void Shape::SetY(int NewX)
+void Shape::SetY(int NewY)
 {
+	Y = NewY;
 }
 
 int Shape::GetX()
 {
-	return 0;
+	return X;
 }
 
 int Shape::GetY()
 {
-	return 0;
+	return Y;
 }

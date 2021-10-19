@@ -6,5 +6,6 @@ public:
 	Circle();
 	virtual ~Circle();
 
+	virtual void Draw() override;
 };
 

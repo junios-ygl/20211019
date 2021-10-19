@@ -6,5 +6,8 @@ class Triangle : public Shape
 public:
 	Triangle();
 	virtual ~Triangle();
+
+	virtual void Draw() override;
+
 };
 
