@@ -10,8 +10,8 @@ public:
 	virtual ~Editor();
 
 	void Draw();
-	void Save();
-	void Load();
+	void Save(); //Serialize
+	void Load(); //Deserialize
 
 	void AddShape(Shape* NewShape);
 

@@ -20,4 +20,6 @@ Triangle::~Triangle()
 void Triangle::Draw()
 {
 	std::cout << "¼¼¸ð" << std::endl;
+	std::cout << "(" << X << "," << Y << ")" << std::endl;
+	std::cout << "Edge : " << Edge << std::endl;
 }

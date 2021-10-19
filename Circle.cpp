@@ -20,4 +20,6 @@ Circle::~Circle()
 void Circle::Draw()
 {
 	std::cout << "동그라미" << std::endl;
+	std::cout << "(" << X << "," << Y << ")" << std::endl;
+	std::cout << "Radius : " <<  Radius << std::endl;
 }

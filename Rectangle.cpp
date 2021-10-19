@@ -21,4 +21,7 @@ Rectangle::~Rectangle()
 void Rectangle::Draw()
 {
 	std::cout << "³×¸ð" << std::endl;
+	std::cout << "(" << X << "," << Y << ")" << std::endl;
+	std::cout << "Width : " << Width << std::endl;
+	std::cout << "Height : " << Height << std::endl;
 }

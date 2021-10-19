@@ -49,7 +49,6 @@ void Editor::Save()
 	std::ofstream writeFile;
 	writeFile.open("Editor.sav");
 
-
 	for (auto Object : Shapes)
 	{
 		if (dynamic_cast<Triangle*>(Object) != nullptr)
@@ -59,7 +58,6 @@ void Editor::Save()
 			writeFile << T->GetX() << std::endl;
 			writeFile << T->GetY() << std::endl;
 			writeFile << T->GetEdge() << std::endl;
-
 		} 
 		else if (dynamic_cast<Rectangle*>(Object) != nullptr)
 		{
@@ -85,6 +83,57 @@ void Editor::Save()
 
 void Editor::Load()
 {
+	std::ifstream readFile;
+	readFile.open("Editor.sav");
+
+	std::string line;
+	while (getline(readFile, line))
+	{
+		if (line == "세모")
+		{
+			getline(readFile, line); //X값
+			int X = std::stoi(line);
+
+			getline(readFile, line); //Y값
+			int Y = std::stoi(line);
+
+			getline(readFile, line); //한변
+			int Edge = std::stoi(line);
+
+			AddShape(new Triangle(X, Y, Edge));
+		}
+		else if (line == "네모")
+		{
+			getline(readFile, line); //X값
+			int X = std::stoi(line);
+
+			getline(readFile, line); //Y값
+			int Y = std::stoi(line);
+
+			getline(readFile, line); //Width
+			int Width = std::stoi(line);
+
+			getline(readFile, line); //Height
+			int Height = std::stoi(line);
+
+			AddShape(new Rectangle(X, Y, Width, Height));
+		}
+		else if (line == "동그라미")
+		{
+			getline(readFile, line); //X값
+			int X = std::stoi(line);
+
+			getline(readFile, line); //Y값
+			int Y = std::stoi(line);
+
+			getline(readFile, line); //Radius
+			int Radius = std::stoi(line);
+
+			AddShape(new Circle(X, Y, Radius));
+		}
+	}
+	
+	readFile.close();
 }
 
 void Editor::AddShape(Shape* NewShape)
